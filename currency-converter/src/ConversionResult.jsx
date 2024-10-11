@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ConversionResult = ({ amount, fromCurrency, convertedAmount, toCurrency, exchangeRate }) => (
-    <div className="mt-4">
+    <div className="currencyresult mt-4">
         <div>
             {amount} {fromCurrency} = {convertedAmount.toFixed(2)} {toCurrency}
         </div>

@@ -5,6 +5,7 @@ import './output.css';
 import CurrencySelector from './CurrencySelector';
 import AmountInput from './AmountInput';
 import ConversionResult from './ConversionResult';
+import axios from 'axios';
 
 function App() {
     const [currencies, setCurrencies] = useState([]);
@@ -42,6 +43,13 @@ function App() {
         }
     };
 
+    // Swap currencies
+    const swapCurrencies = () => {
+        const tempCurrency = fromCurrency;
+        setFromCurrency(toCurrency);
+        setToCurrency(tempCurrency);
+    };
+
     // Fetch currencies on component mount
     useEffect(() => {
         fetchCurrencies();
@@ -56,9 +64,24 @@ function App() {
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">Currency Converter</h1>
+            <h1 className="title text-2xl font-bold mb-4">Currency Converter</h1>
             {error && <div className="text-red-500">{error}</div>}
             <CurrencySelector currencies={currencies} selectedCurrency={fromCurrency} onCurrencyChange={setFromCurrency} label="From" />
+
+            {/* Swap Button with Icon */}
+            <div className="text-center my-4">
+                <button 
+                    onClick={swapCurrencies} 
+                    className="btn bg-blue-white hover:bg-white-700 font-bold py-2 px-4"
+                >
+                    <img 
+                        src="https://img.icons8.com/?size=100&id=45026&format=png&color=ffffff" 
+                        alt="Swap Icon" 
+                        className="swapicon inline-block h-4 w-6"
+                    />
+                </button>
+            </div>
+
             <CurrencySelector currencies={currencies} selectedCurrency={toCurrency} onCurrencyChange={setToCurrency} label="To" />
             <AmountInput amount={amount} onAmountChange={(e) => setAmount(e.target.value)} />
             <ConversionResult 

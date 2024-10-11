@@ -1,4 +1,4 @@
-#root {
+/*#root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -35,7 +35,7 @@
 
 .card {
   padding: 2em;
-}
+}*/
 
 .read-the-docs {
   color: #888;
@@ -46,15 +46,15 @@
   margin-top: 50px;
 }
 
-.converter-section {
+/*.converter-section {
   display: inline-block;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
-}
+}*/
 
 .converter-section label {
-  margin-right: 10px;
+  margin-right: 20px !important;
 }
 
 .result-section {

@@ -5,7 +5,7 @@ const AmountInput = ({ amount, onAmountChange }) => (
         type="number"
         value={amount}
         onChange={onAmountChange}
-        className="border p-2 rounded mb-4"
+        className="amountsection border p-2 rounded mb-4"
     />
 );
 
