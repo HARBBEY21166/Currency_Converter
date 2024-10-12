@@ -88,7 +88,7 @@ function App() {
             >
                 <img 
                     src="src/components/9071075_dark_mode_icon.svg" 
-                    alt="Swap Icon" 
+                    alt="Darkmode" 
                     className="swapicon inline-block h-4 w-6"
                 />
             </button>
