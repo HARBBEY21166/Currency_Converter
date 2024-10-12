@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './index.css';
 import './App.css';
 import './output.css';
-import CurrencySelector from './CurrencySelector';
-import AmountInput from './AmountInput';
-import ConversionResult from './ConversionResult';
+import CurrencySelector from './components/CurrencySelector';
+import AmountInput from './components/AmountInput';
+import ConversionResult from './components/ConversionResult';
 import axios from 'axios';
 
 function App() {
@@ -15,6 +15,8 @@ function App() {
     const [convertedAmount, setConvertedAmount] = useState(0);
     const [exchangeRate, setExchangeRate] = useState(null);
     const [error, setError] = useState(null);
+    const [isDarkMode, setIsDarkMode] = useState(false); // Dark mode state
+
 
     // Fetch currencies
     const fetchCurrencies = async () => {
@@ -62,9 +64,34 @@ function App() {
         }
     }, [fromCurrency, toCurrency, amount]);
 
+    // Toggle dark mode
+    const toggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+        localStorage.setItem('theme', !isDarkMode ? 'dark' : 'light');
+    };
+
+    // Load theme from local storage
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setIsDarkMode(savedTheme === 'dark');
+        }
+    }, []);
+
     return (
+         <div className={isDarkMode ? 'dark' : ''}>
         <div className="container mx-auto p-4">
             <h1 className="title text-2xl font-bold mb-4">Currency Converter</h1>
+            <button 
+                onClick={toggleDarkMode} 
+                className={`p-2 mb-4 border ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-black'}`}
+            >
+                <img 
+                    src="src/components/9071075_dark_mode_icon.svg" 
+                    alt="Swap Icon" 
+                    className="swapicon inline-block h-4 w-6"
+                />
+            </button>
             {error && <div className="text-red-500">{error}</div>}
             <CurrencySelector currencies={currencies} selectedCurrency={fromCurrency} onCurrencyChange={setFromCurrency} label="From" />
 
@@ -92,6 +119,7 @@ function App() {
                 exchangeRate={exchangeRate} 
             />
         </div>
+              </div>
     );
 }
 
