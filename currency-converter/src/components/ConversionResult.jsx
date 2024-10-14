@@ -6,7 +6,7 @@ const ConversionResult = ({ amount, fromCurrency, convertedAmount, toCurrency, e
             {amount} {fromCurrency} = {convertedAmount.toFixed(2)} {toCurrency}
         </div>
         {exchangeRate && (
-            <div className="mt-2 text-gray-600">
+            <div className="rate mt-2 text-gray-600">
                 Exchange Rate: 1 {fromCurrency} = {exchangeRate.toFixed(4)} {toCurrency}
             </div>
         )}

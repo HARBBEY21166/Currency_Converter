@@ -84,12 +84,12 @@ function App() {
             <h1 className="title text-2xl font-bold mb-4">Currency Converter</h1>
             <button 
                 onClick={toggleDarkMode} 
-                className={`p-2 mb-4 border ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-black'}`}
+                className={`p-2 mb-4 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-black'}`}
             >
                 <img 
                     src="src/components/9071075_dark_mode_icon.svg" 
                     alt="Darkmode" 
-                    className="swapicon inline-block h-4 w-6"
+                    className="darkmodeicon inline-block h-9 w-9"
                 />
             </button>
             {error && <div className="text-red-500">{error}</div>}
